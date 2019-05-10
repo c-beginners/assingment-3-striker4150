@@ -37,15 +37,15 @@ int main() {
     std::cin >> size;
 
     // Dynamically allocate memory for matrix
-    mat = (int**)calloc(size, sizeof(int*));
+    mat = new int*[size];
     for(int i = 0; i < size; i++) {
-        mat[i] = (int*)calloc(size, sizeof(int));
+        mat[i] = new int[size];
     }
 
     // Dynamically allocate memory for transposed matrix
-    transpose = (int**)calloc(size, sizeof(int*));
+    transpose = new int*[size];
     for(int i = 0; i < size; i++) {
-        transpose[i] = (int*)calloc(size, sizeof(int));
+        transpose[i] = new int[size];
     }
 
     std::cout << "Enter the matrix data:" << std::endl;
@@ -66,15 +66,15 @@ int main() {
 
     // Free matrix
     for(int i = 0; i < size; i++) {
-        free(mat[i]);
+        delete[] mat[i];
     }
-    free(mat);
+    delete[] mat;
 
     // Free transposed matrix
     for(int i = 0; i < size; i++) {
-        free(transpose[i]);
+        delete[] transpose[i];
     }
-    free(transpose);
+    delete[] transpose;
 
     return 0;
 }
