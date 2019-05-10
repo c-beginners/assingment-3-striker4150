@@ -1,7 +1,7 @@
-#include <iostream>
+#include <stdio.h>
 
 template <typename T>
-int diagonal_sum(const T &mat, int size) {
+int diagonal_sum(const T &mat, const int size) {
     int sum = 0;
 
     for(int i = 0; i < size; i++) {
@@ -12,17 +12,17 @@ int diagonal_sum(const T &mat, int size) {
 }
 
 template <typename T>
-void print_mat(const T &mat, int size) {
+void print_mat(const T &mat, const int size) {
     for(int row = 0; row < size; row++) {
         for(int col = 0; col < size; col++) {
-            std::cout << mat[row][col] << " ";
+            printf("%d ", mat[row][col]);
         }
-        std::cout << std::endl;
+        printf("\n");
     }
 }
 
 template <typename T>
-void transpose_mat(const T &mat, T &output, int size) {
+void transpose_mat(const T &mat, T &output, const int size) {
     for(int row = 0; row < size; row++) {
         for(int col = 0; col < size; col++) {
             output[col][row] = mat[row][col];
@@ -33,8 +33,8 @@ void transpose_mat(const T &mat, T &output, int size) {
 int main() {
     int **mat, **transpose, size;
 
-    std::cout << "Enter an matrix size: ";
-    std::cin >> size;
+    printf("Enter an matrix size: ");
+    scanf(" %d", &size);
 
     // Dynamically allocate memory for matrix
     mat = new int*[size];
@@ -48,20 +48,20 @@ int main() {
         transpose[i] = new int[size];
     }
 
-    std::cout << "Enter the matrix data:" << std::endl;
+    printf("Enter the matrix data:\n");
     for(int row = 0; row < size; row++) {
         for(int col = 0; col < size; col++) {
-            std::cin >> mat[row][col];
+            scanf(" %d", &mat[row][col]);
         }
     }
 
-    std::cout << "Original matrix:" << std::endl;
+    printf("Original matrix:\n");
     print_mat(mat, size);
 
-    std::cout << "Diagonal sum: " << diagonal_sum(mat, size) << std::endl;
+    printf("Diagonal sum: %d\n", diagonal_sum(mat, size));
 
     transpose_mat(mat, transpose, size);
-    std::cout << "Transposed matrix:" << std::endl;
+    printf("Transposed matrix:\n");
     print_mat(transpose, size);
 
     // Free matrix
