@@ -12,6 +12,8 @@ https://en.wikipedia.org/wiki/Transpose
 
 Do not use any STL stuff.
 
+(Note: Challenge clarified to only perform operations on square matrices)
+
 ## Getting Started
 
 ### Prerequisites
